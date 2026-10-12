@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.binlog
+*.log
+
+# NuGet
+*.nupkg
+packages/
+
+# Rider / VS
+.idea/
+*.DotSettings.user
+
+# Publish output
+publish/

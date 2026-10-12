@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ContextMenuManager.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ScrollViewer>
+        <StackPanel Spacing="20" Padding="24,16" MaxWidth="640" HorizontalAlignment="Left">
+            <TextBlock x:Uid="SettingsTitle" Style="{StaticResource TitleTextBlockStyle}" />
+
+            <TextBlock x:Uid="LanguageHeader" Style="{StaticResource SubtitleTextBlockStyle}" />
+            <ComboBox x:Name="LanguageCombo" MinWidth="260" SelectionChanged="OnLanguageChanged" />
+
+            <TextBlock
+                x:Name="RestartNote"
+                x:Uid="LanguageRestartNote"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                TextWrapping="Wrap"
+                Visibility="Collapsed" />
+
+            <TextBlock x:Uid="AboutHeader" Style="{StaticResource SubtitleTextBlockStyle}" />
+            <TextBlock
+                x:Name="VersionText"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            <TextBlock x:Uid="AboutText" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="msdata:Locale" type="xsd:string" msdata:Ordinal="2" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+
+  <data name="AppTitle" xml:space="preserve">
+    <value>Gerenciador de Menu de Contexto</value>
+  </data>
+  <data name="NavView.SettingsItem" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+
+  <data name="NavFile.Content" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="NavFolder.Content" xml:space="preserve">
+    <value>Pasta</value>
+  </data>
+  <data name="NavDirectory.Content" xml:space="preserve">
+    <value>Diretório</value>
+  </data>
+  <data name="NavBackground.Content" xml:space="preserve">
+    <value>Plano de fundo da pasta</value>
+  </data>
+  <data name="NavDesktop.Content" xml:space="preserve">
+    <value>Área de trabalho</value>
+  </data>
+  <data name="NavDrive.Content" xml:space="preserve">
+    <value>Unidade</value>
+  </data>
+  <data name="NavAllObjects.Content" xml:space="preserve">
+    <value>Todos os objetos</value>
+  </data>
+  <data name="NavComputer.Content" xml:space="preserve">
+    <value>Computador</value>
+  </data>
+  <data name="NavRecycleBin.Content" xml:space="preserve">
+    <value>Lixeira</value>
+  </data>
+  <data name="NavLibrary.Content" xml:space="preserve">
+    <value>Bibliotecas</value>
+  </data>
+
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
+    <value>Pesquisar itens</value>
+  </data>
+  <data name="RefreshButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="DeleteButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="VisibleToggle.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar no menu de contexto</value>
+  </data>
+
+  <data name="ItemCount" xml:space="preserve">
+    <value>{0} itens</value>
+  </data>
+  <data name="NoItems" xml:space="preserve">
+    <value>Nenhum item encontrado</value>
+  </data>
+  <data name="DeleteConfirmTitle" xml:space="preserve">
+    <value>Excluir item</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>Excluir '{0}' permanentemente do Registro?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>A operação falhou: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+
+  <data name="MoreButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Mais opções</value>
+  </data>
+  <data name="MenuRename.Text" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="MenuChangeCommand.Text" xml:space="preserve">
+    <value>Alterar comando</value>
+  </data>
+  <data name="MenuChangeIcon.Text" xml:space="preserve">
+    <value>Alterar ícone</value>
+  </data>
+  <data name="MenuRemoveIcon.Text" xml:space="preserve">
+    <value>Remover ícone</value>
+  </data>
+  <data name="MenuShieldIcon.Text" xml:space="preserve">
+    <value>Usar ícone de escudo</value>
+  </data>
+  <data name="MenuPosition.Text" xml:space="preserve">
+    <value>Posição</value>
+  </data>
+  <data name="MenuPosDefault.Text" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="MenuPosTop.Text" xml:space="preserve">
+    <value>Topo</value>
+  </data>
+  <data name="MenuPosBottom.Text" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="MenuAttributes.Text" xml:space="preserve">
+    <value>Atributos</value>
+  </data>
+  <data name="MenuOnlyShift.Text" xml:space="preserve">
+    <value>Somente com Shift</value>
+  </data>
+  <data name="MenuOnlyExplorer.Text" xml:space="preserve">
+    <value>Somente no Explorador</value>
+  </data>
+  <data name="MenuNoWorkDir.Text" xml:space="preserve">
+    <value>Sem diretório de trabalho</value>
+  </data>
+  <data name="MenuNeverDefault.Text" xml:space="preserve">
+    <value>Nunca padrão</value>
+  </data>
+
+  <data name="InputRenameTitle" xml:space="preserve">
+    <value>Renomear item</value>
+  </data>
+  <data name="InputCommandTitle" xml:space="preserve">
+    <value>Comando</value>
+  </data>
+  <data name="InputIconTitle" xml:space="preserve">
+    <value>Local do ícone</value>
+  </data>
+  <data name="InputIconHint" xml:space="preserve">
+    <value>Exemplo: imageres.dll,-78 ou C:\Program Files\App\app.exe,0</value>
+  </data>
+  <data name="WarningOpenItemTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="WarningOpenItem" xml:space="preserve">
+    <value>Esta é a ação 'open' que o Windows usa para abrir arquivos e pastas. Alterá-la pode impedir a abertura. Continuar?</value>
+  </data>
+  <data name="ErrorTextTooLong" xml:space="preserve">
+    <value>O texto é longo demais: nomes resolvidos de menu devem ter menos de 80 caracteres.</value>
+  </data>
+
+  <data name="SettingsTitle.Text" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="LanguageHeader.Text" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="LanguageSystem" xml:space="preserve">
+    <value>Padrão do sistema</value>
+  </data>
+  <data name="LanguageRestartNote.Text" xml:space="preserve">
+    <value>A alteração de idioma terá efeito total após reiniciar o aplicativo.</value>
+  </data>
+  <data name="AboutHeader.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="AboutText.Text" xml:space="preserve">
+    <value>Um rewrite em WinUI 3 do ContextMenuManager, de BluePointlilac.&#13;&#10;Gerencie as entradas dos menus de contexto (botão direito) do Windows.&#13;&#10;Itens Shell são alternados por valores do Registro (LegacyDisable, ProgrammaticAccessOnly, HideBasedOnVelocityId) e manipuladores ShellEx pela realocação de suas chaves do Registro.&#13;&#10;Licenciado sob GPL-3.0, como o projeto original.</value>
+  </data>
+  <data name="VersionFormat" xml:space="preserve">
+    <value>Versão: {0}</value>
+  </data>
+</root>
