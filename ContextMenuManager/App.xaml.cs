@@ -7,6 +7,8 @@ public partial class App : Application
 {
     public const string LanguageOverrideKey = "LanguageOverride";
 
+    public static Window? MainWindow { get; private set; }
+
     private Window? _window;
 
     public App()
@@ -26,6 +28,7 @@ public partial class App : Application
             }
 
             _window = new MainWindow();
+            MainWindow = _window;
             _window.Activate();
         }
         catch (Exception ex)

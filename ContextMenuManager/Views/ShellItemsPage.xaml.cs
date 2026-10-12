@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
 using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using ContextMenuManager.Models;
 using ContextMenuManager.Services;
 using Microsoft.UI.Xaml;
@@ -327,5 +329,89 @@ public sealed partial class ShellItemsPage : Page
         if (GetItem(sender) is not { } item
             || sender is not ToggleMenuFlyoutItem toggle) return;
         await RunEditAsync(item, () => item.SetNeverDefault(toggle.IsChecked));
+    }
+
+    // ---- New item (port of NewShellDialog) ----
+
+    private async void OnNew(object sender, RoutedEventArgs e)
+    {
+        TextBox txtText = new() { Header = Loc.Get("LabelDisplayText") };
+        TextBox txtCommand = new() { Header = Loc.Get("InputCommandTitle") };
+        TextBox txtIcon = new() { Header = Loc.Get("InputIconTitle"), PlaceholderText = Loc.Get("InputIconHint") };
+        CheckBox chkMulti = new() { Content = Loc.Get("LabelMulti") };
+        Button btnBrowse = new() { Content = Loc.Get("BrowseButton") };
+
+        chkMulti.Checked += (s, _) => txtCommand.IsEnabled = false;
+        chkMulti.Unchecked += (s, _) => txtCommand.IsEnabled = true;
+        btnBrowse.Click += async (s, _) => await BrowseForCommandAsync(txtText, txtCommand);
+
+        StackPanel panel = new()
+        {
+            Spacing = 12,
+            MinWidth = 380,
+            Children =
+            {
+                txtText,
+                txtCommand,
+                btnBrowse,
+                txtIcon,
+                chkMulti,
+            },
+        };
+
+        ContentDialog dialog = new()
+        {
+            XamlRoot = XamlRoot,
+            Title = Loc.Get("DialogNewTitle"),
+            Content = panel,
+            PrimaryButtonText = Loc.Get("OK"),
+            CloseButtonText = Loc.Get("Cancel"),
+            DefaultButton = ContentDialogButton.Primary,
+            IsPrimaryButtonEnabled = false,
+        };
+        txtText.TextChanged += (s, _) => dialog.IsPrimaryButtonEnabled = !string.IsNullOrWhiteSpace(txtText.Text);
+
+        if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
+
+        string text = txtText.Text.Trim();
+        string? command = chkMulti.IsChecked == true ? null : txtCommand.Text?.Trim();
+        string? icon = txtIcon.Text?.Trim();
+
+        try
+        {
+            await Task.Run(() => ShellItemLoader.CreateShellItem(_scene, text, command, icon, chkMulti.IsChecked == true));
+            SearchBox.Text = string.Empty;
+            LoadItems();
+        }
+        catch (Exception ex)
+        {
+            await ShowErrorAsync(Loc.Format("OperationFailed", ex.Message));
+        }
+    }
+
+    /// <summary>Picks a file/program and builds the command, resolving the default handler for data files
+    /// and appending %1/%V so the clicked object is passed to the entry (as in the original).</summary>
+    private async Task BrowseForCommandAsync(TextBox txtText, TextBox txtCommand)
+    {
+        FileOpenPicker picker = new() { SuggestedStartLocation = PickerLocationId.ComputerFolder };
+        picker.FileTypeFilter.Add("*");
+        WinRT.Interop.InitializeWithWindow.Initialize(picker,
+            WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow));
+
+        StorageFile? file = await picker.PickSingleFileAsync();
+        if (file == null) return;
+
+        if (string.IsNullOrWhiteSpace(txtText.Text))
+        {
+            txtText.Text = Path.GetFileNameWithoutExtension(file.Name);
+        }
+
+        string path = file.Path;
+        string? exe = AssocQuery.GetExecutableForExtension(Path.GetExtension(path));
+        string command = exe != null && File.Exists(exe)
+            ? $"\"{exe}\" \"{path}\""
+            : $"\"{path}\"";
+        command += ShellItemLoader.GetArgumentSuffix(_scene);
+        txtCommand.Text = command;
     }
 }

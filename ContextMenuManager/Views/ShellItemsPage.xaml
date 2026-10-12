@@ -14,6 +14,7 @@
         <Grid Padding="16,10,16,8" ColumnSpacing="12">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
                 <ColumnDefinition Width="280" />
                 <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
@@ -23,10 +24,19 @@
                 VerticalAlignment="Center"
                 Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
 
+            <Button
+                x:Uid="NewItemButton"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Click="OnNew">
+                <FontIcon Glyph="&#xE710;" />
+            </Button>
+
             <AutoSuggestBox
                 x:Name="SearchBox"
                 x:Uid="SearchBox"
-                Grid.Column="1"
+                Grid.Column="2"
                 VerticalAlignment="Center"
                 QueryIcon="Find"
                 TextChanged="OnSearchChanged" />
@@ -34,7 +44,7 @@
             <Button
                 x:Name="RefreshButton"
                 x:Uid="RefreshButton"
-                Grid.Column="2"
+                Grid.Column="3"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 Click="OnRefresh">

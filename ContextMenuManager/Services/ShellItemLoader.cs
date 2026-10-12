@@ -49,6 +49,59 @@ public static class ShellItemLoader
         }
     }
 
+    /// <summary>Primary shell registry path of a scene, where new items are created.</summary>
+    public static string GetPrimaryShellPath(MenuScene scene) => $@"{GetScenePath(scene)}\shell";
+
+    /// <summary>
+    /// Argument suffix appended when a command is built from a picked file,
+    /// so the menu entry receives the clicked object (port of the original's BrowseFile logic).
+    /// </summary>
+    public static string GetArgumentSuffix(MenuScene scene) => scene switch
+    {
+        MenuScene.File or MenuScene.Folder or MenuScene.AllObjects => " \"%1\"",
+        MenuScene.Directory => " \"%V\"",
+        _ => string.Empty,
+    };
+
+    /// <summary>Creates a new shell context menu entry (port of NewShellDialog.AddNewItem).</summary>
+    public static string CreateShellItem(MenuScene scene, string text, string? command, string? icon, bool isMulti)
+    {
+        string shellPath = GetPrimaryShellPath(scene);
+        string keyName = GetNewKeyName(shellPath);
+        string regPath = $@"{shellPath}\{keyName}";
+
+        using Microsoft.Win32.RegistryKey shellKey = RegistryEx.GetRegistryKey(shellPath, writable: true, create: true)
+            ?? throw new InvalidOperationException($"Cannot open: {shellPath}");
+        using Microsoft.Win32.RegistryKey itemKey = shellKey.CreateSubKey(keyName, writable: true);
+
+        itemKey.SetValue("MUIVerb", text);
+        if (isMulti)
+        {
+            itemKey.SetValue("SubCommands", string.Empty);
+        }
+        else if (!string.IsNullOrEmpty(command))
+        {
+            itemKey.CreateSubKey("command", writable: true).SetValue(string.Empty, command);
+        }
+        if (!string.IsNullOrEmpty(icon))
+        {
+            itemKey.SetValue("Icon", icon);
+        }
+
+        return regPath;
+    }
+
+    /// <summary>Returns a free key name: "Item", "Item0", "Item1", ...</summary>
+    private static string GetNewKeyName(string shellPath)
+    {
+        if (RegistryEx.GetRegistryKey($@"{shellPath}\Item") == null) return "Item";
+        for (int i = 0; ; i++)
+        {
+            string name = $"Item{i}";
+            if (RegistryEx.GetRegistryKey($@"{shellPath}\{name}") == null) return name;
+        }
+    }
+
     public static List<ShellEntry> LoadScene(MenuScene scene)
     {
         List<ShellEntry> entries = new();

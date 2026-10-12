@@ -208,6 +208,22 @@
     <value>The text is too long: resolved menu names must stay under 80 characters.</value>
   </data>
 
+  <data name="NewItemButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add new item</value>
+  </data>
+  <data name="DialogNewTitle" xml:space="preserve">
+    <value>New context menu item</value>
+  </data>
+  <data name="LabelDisplayText" xml:space="preserve">
+    <value>Display name</value>
+  </data>
+  <data name="LabelMulti" xml:space="preserve">
+    <value>Multi-item (holds sub-entries, command is disabled)</value>
+  </data>
+  <data name="BrowseButton" xml:space="preserve">
+    <value>Browse...</value>
+  </data>
+
   <data name="SettingsTitle.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
